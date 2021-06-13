@@ -1,6 +1,7 @@
 package com.mashibing.juc.c_020;
 
 import java.util.concurrent.Exchanger;
+import java.util.concurrent.TimeUnit;
 
 public class T12_TestExchanger {
 
@@ -10,7 +11,9 @@ public class T12_TestExchanger {
         new Thread(()->{
             String s = "T1";
             try {
+                System.out.println("start T1");
                 s = exchanger.exchange(s);
+                System.out.println("end exchange T1");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -22,7 +25,10 @@ public class T12_TestExchanger {
         new Thread(()->{
             String s = "T2";
             try {
+                System.out.println("start T2");
+                TimeUnit.SECONDS.sleep(2);
                 s = exchanger.exchange(s);
+                System.out.println("end exchange T2");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -102,7 +102,7 @@ public class T09_TestPhaser2 {
         @Override
         public void run() {
             arrive();
-
+            System.out.println("end arrive");
 
             eat();
 
